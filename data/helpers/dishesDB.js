@@ -1,9 +1,24 @@
 const db = require('./../dbConfig');
 
 module.exports = {
-  get
+  getDishes,
+  addDish,
+  getDish,
+  deleteDish
 }
 
-function get() {
+function getDishes() {
   return db('dishes');
+}
+
+function addDish(dish) {
+  return db('dishes').insert(dish)
+}
+
+function getDish(id){
+
+}
+
+function deleteDish(id) {
+
 }

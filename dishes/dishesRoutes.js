@@ -13,13 +13,30 @@ const error500 = {
 }
 
 router.get('/', (req, res) => {
-  dishesDB.get()
+  dishesDB.getDishes()
   .then(data => {
     res.status(200).json(data)
   })
   .catch(()=> {
     res.status(500).json(error500)
   })
+})
+
+// RETURNS ID of new entry
+router.post('/', (req, res) => {
+  const dish = req.body;
+  console.log(dish.value)
+  if (!dish) {
+    res.status(404).json(error404)
+  } else {
+    dishesDB.addDish(dish)
+      .then(data => {
+        res.status(201).json(data)
+      })
+      .catch(() => {
+        res.status(500).json(error500)
+      })
+  }
 })
 
 module.exports = router;
