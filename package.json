@@ -1,0 +1,29 @@
+{
+  "name": "assignmentiv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LambdaSchool/webdb-iv-challenge.git",
+  "author": "AnthonyJCampbell <anthony@anthonyjcampbell.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon",
+    "init db": "knex init",
+    "table1": "knex migrate:make createRolesTable",
+    "table2": "knex migrate:make createUsersTable",
+    "migrate": "knex migrate:latest",
+    "seed1": "knex seed:make 001-roles",
+    "seed2": "knex seed:make 001-users",
+    "runseed1": "knex seed:run 001-roles",
+    "runseed2": "knex seed:run 002-users",
+    "runseeds": "knex seed:run",
+    "rollback": "knex migrate:rollback"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
