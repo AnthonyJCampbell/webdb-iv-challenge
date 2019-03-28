@@ -16,7 +16,7 @@ function addDish(dish) {
 }
 
 function getDish(id){
-
+  return db('dishes').where({id})
 }
 
 function deleteDish(id) {

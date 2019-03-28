@@ -22,10 +22,20 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  dishesDB.getDish(id)
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(() => {
+      res.status(500).json(error500)
+    })
+})
+
 // RETURNS ID of new entry
 router.post('/', (req, res) => {
   const dish = req.body;
-  console.log(dish.value)
   if (!dish) {
     res.status(404).json(error404)
   } else {
