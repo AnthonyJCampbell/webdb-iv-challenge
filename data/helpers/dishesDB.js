@@ -20,5 +20,5 @@ function getDish(id){
 }
 
 function deleteDish(id) {
-
+  return db('dishes').where({id}).del()
 }

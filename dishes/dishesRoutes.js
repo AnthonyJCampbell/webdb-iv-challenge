@@ -26,7 +26,11 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   dishesDB.getDish(id)
     .then(data => {
-      res.status(200).json(data);
+      if(!data) {
+        res.status(404).json(error404)
+      } else {
+        res.status(200).json(data);
+      }
     })
     .catch(() => {
       res.status(500).json(error500)
@@ -47,6 +51,23 @@ router.post('/', (req, res) => {
         res.status(500).json(error500)
       })
   }
+})
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  dishesDB.deleteDish(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).json(error404)
+      } else {
+        res.status(204).json({
+          message: `Successfully delete the dish with ID of ${id}`
+        })
+      }
+    })
+    .catch(() => {
+      res.status(500).json(error500)
+    })
 })
 
 module.exports = router;
