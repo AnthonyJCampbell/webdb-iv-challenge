@@ -12,7 +12,11 @@ function getDishes() {
 }
 
 function addDish(dish) {
-  return db('dishes').insert(dish)
+  return db('dishes')
+    .insert(dish)
+    .then(ids => {
+      return getDish(ids[0]);
+    });
 }
 
 function getDish(id){
