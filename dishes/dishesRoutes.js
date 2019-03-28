@@ -53,6 +53,7 @@ router.post('/', (req, res) => {
   }
 })
 
+// Returns empty
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   dishesDB.deleteDish(id)
